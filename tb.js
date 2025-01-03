@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 
 const app = express();
-const PORT = 3000;
+const PORT = procesa.env.PORT || 3000;
 
 function extractD7(url) {
     const match = url.match(/\/s\/([\w\d_-]+)/);
