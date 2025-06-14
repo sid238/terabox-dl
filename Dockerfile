@@ -1,23 +1,19 @@
-# Use official Node.js LTS image
-FROM node:20
+FROM node:lts-buster
 
-# Install ffmpeg
-RUN apt-get update && apt-get install -y ffmpeg
+RUN apt-get update && \
+  apt-get install -y \
+  ffmpeg \
+  imagemagick \
+  webp && \
+  apt-get upgrade -y && \
+  rm -rf /var/lib/apt/lists/*
 
-# Create app directory
-WORKDIR /app
+COPY package.json .
 
-# Copy package files
-COPY package*.json ./
+RUN npm install && npm install pm2
 
-# Install dependencies
-RUN npm install
-
-# Copy source code
 COPY . .
 
-# Expose port
-EXPOSE 3000
+EXPOSE 5000
 
-# Start server
 CMD ["npm", "start"]
