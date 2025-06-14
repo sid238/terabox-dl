@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "prestart": "bash ffmpeg.sh",      // 🔧 installs ffmpeg before start
-    "start": "node index.js"          // 👈 your main file
+    "prestart": "bash ffmpeg.sh",
+    "start": "node index.js"
   },
   "dependencies": {
     "axios": "^1.9.0",
