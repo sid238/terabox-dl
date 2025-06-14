@@ -1,19 +1,23 @@
-FROM node:lts-buster
+# Use official Node.js LTS image
+FROM node:20
 
-RUN apt-get update && \
-  apt-get install -y \
-  ffmpeg \
-  imagemagick \
-  webp && \
-  apt-get upgrade -y && \
-  rm -rf /var/lib/apt/lists/*
+# Install ffmpeg
+RUN apt-get update && apt-get install -y ffmpeg
 
-COPY package.json .
+# Create app directory
+WORKDIR /app
 
-RUN npm install && npm install -g qrcode-terminal pm2
+# Copy package files
+COPY package*.json ./
 
+# Install dependencies
+RUN npm install
+
+# Copy source code
 COPY . .
 
-EXPOSE 5000
+# Expose port
+EXPOSE 3000
 
+# Start server
 CMD ["npm", "start"]
