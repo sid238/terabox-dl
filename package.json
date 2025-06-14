@@ -1,16 +1,24 @@
 {
-  "name": "tb",
+  "name": "terabox-downloader",
   "version": "1.0.0",
-  "main": "tb.js",
+  "description": "Terabox video downloader with compression and Telegram support",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "pm2": "pm2 start index.js --name terabox-downloader"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "Your Name",
+  "license": "MIT",
   "dependencies": {
-    "axios": "^1.7.9",
-    "express": "^4.21.2"
+    "axios": "^1.9.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "fluent-ffmpeg": "^2.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0",
+    "pm2": "^5.3.0"
   }
 }
